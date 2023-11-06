@@ -1,0 +1,78 @@
+- shortname: WSKG
+  URL: https://wskg.streamguys1.com/wskg
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+- shortname: WSKG Classical
+  URL: https://wskg.streamguys1.com/wsqx
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+- shortname: WSKG Jazz
+  URL: https://wskg.streamguys1.com/wskg-classic-jazz
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+- shortname: BBC WS
+  URL: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+- shortname: NPR
+  URL: https://npr-ice.streamguys1.com/live.mp3
+  mpdtracknamekey: null
+  mpdstationnamekey: name
+- shortname: MPR YC
+  URL: https://ycradio.stream.publicradio.org/ycradio.aac
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+- shortname: Classic FM
+  URL: http://media-sov.musicradio.com:80/ClassicFMMP3
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+- shortname: Classic FM Relax
+  URL: http://media-the.musicradio.com/ClassicFM-M-Relax
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+- shortname: RNZ Classical
+  URL: http://radionz-ice.streamguys.com/concert.mp3
+  mpdtracknamekey: null
+  mpdstationnamekey: name
+- shortname: BBC 3
+  URL: http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=48000.norewind.m3u8
+  mpdtracknamekey: title
+  mpdstationnamekey: name
+  remark: URL tends to change frequently. Trouble streaming continuously
+- shortname: RTI TW
+  URL: https://streamak0138.akamaized.net/live0138lh-mbm9/_definst_/rti3/playlist.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: AiFM
+  URL: https://23693.live.streamtheworld.com/AI_FMAAC.aac
+  mpdtracknamekey: null
+  mpdstationnamekey: name
+- shortname: RNZ Int.
+  URL: http://radionz-ice.streamguys.com/international.mp3
+  mpdtracknamekey: null
+  mpdstationnamekey: name
+- shortname: RNZ Nat.
+  URL: http://radionz-ice.streamguys.com/national.mp3
+  mpdtracknamekey: null
+  mpdstationnamekey: name
+- shortname: ABC Radio Aus
+  URL: https://mediaserviceslive.akamaized.net/hls/live/2038266/ramulti/masterhq.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: ABC Radio Nat
+  URL: https://mediaserviceslive.akamaized.net/hls/live/2038318/rnnsw/masterhq.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: CNR Biz
+  URL: https://ngcdn002.cnr.cn/live/jjzs/index.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: CNR Music
+  URL: https://ngcdn003.cnr.cn/live/yyzs/index.m3u8 
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: NHK World
+  URL: https://nhkwlive-radio.akamaized.net/hls/live/2032384/radio-rs5/index_07.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+  
