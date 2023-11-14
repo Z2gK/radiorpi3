@@ -26,8 +26,8 @@ def printtwocols(stationlist):
 with open(os.environ['HOME'] + "/.radiorpi3/stations.yaml", 'r') as fp:
     stationlist = yaml.safe_load(fp) # need to define loader here?
 
-print(type(stationlist))
-print(stationlist)
+# print(type(stationlist))
+# print(stationlist)
 
 # WARNING - this will initialize the client and clear out any existing playlist
 client = musicpd.MPDClient()

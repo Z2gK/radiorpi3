@@ -22,6 +22,10 @@
   URL: https://ycradio.stream.publicradio.org/ycradio.aac
   mpdtracknamekey: title
   mpdstationnamekey: name
+- shortname: MPR Choral
+  URL: https://choral.stream.publicradio.org/choral.aac
+  mpdtracknamekey: title
+  mpdstationnamekey: name
 - shortname: Classic FM
   URL: http://media-sov.musicradio.com:80/ClassicFMMP3
   mpdtracknamekey: title
