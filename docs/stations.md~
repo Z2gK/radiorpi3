@@ -1,3 +1,0 @@
-# Station configuration file
-
-This file is in yaml format and will be read by the client in order to initialize the MPD playlist.
