@@ -28,6 +28,6 @@ To play a station, select option `P` and enter the index of the station. In the 
 
 Some stations provide additional information for the song or programme currently playing. Select option `T` to view this information.
 
-![Showing track information](screenshot06.jpg)
+![Showing track information](screenshot06.png)
 
 To check if a station provides programme information, we can use the script `checkstreaminfo.py` - refer to *this page* (link to page to be updated) for more details.
