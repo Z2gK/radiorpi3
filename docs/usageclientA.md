@@ -20,7 +20,7 @@ A menu of options is presented when the script is run. At the same time, the scr
 
 ## Playing a station
 
-To play a station, select option `P` and enter the index of the station. In the screenshot below, we have selected "MPR Choral", located at index 6 on the station list. The station will start to play.
+To play a station, select option `P` and enter the index of the station. In the screenshot below, we have selected "MPR Choral", located at index 6 on the station list. The station will start playing.
 
 ![Playing a station](screenshot05.png)
 

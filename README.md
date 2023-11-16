@@ -1,6 +1,8 @@
 # Introduction
 
-This in-progress project aims to create an [Music Player Daemon (MPD)](https://www.musicpd.org/) based internet radio player on Raspberry Pi 3, with functionalities similar to that of an actual radio. In its most advanced state (Client C), the player will have an LCD display (HD44780U-compatible) showing station information and remote control via infrared-red (IR) receiver, without having to use a separate client (e.g. laptop) for control via SSH.
+This in-progress project aims to create an [Music Player Daemon (MPD)](https://www.musicpd.org/) based internet radio player on Raspberry Pi 3, with functionalities similar to that of an actual radio. In its most advanced state (Client C), the player will have an LCD display (HD44780U-compatible) showing station information and remote control via infrared-red (IR) receiver, without having to use a separate client (e.g. laptop) for control via SSH. 
+
+Please note that this player works only if the station's streaming URL is static, i.e. they do not change frequently and do not have protection mechanisms (such as URL signing) built in.
 
 ![High level design](docs/design.png)
 
