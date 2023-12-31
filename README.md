@@ -37,6 +37,11 @@ Further details on the various clients and components of this project can be fou
 
 # Build Instructions
 
+1. Setting up the Raspberry Pi 3
+2. Installing the software packages
+3. MPD Configuration
+4. Updating the station configuration file
+
 *To be updated.*
 
 # References

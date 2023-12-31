@@ -41,11 +41,15 @@ for listitem in stationlist:
 # Print this to see if initialization is done properly
 # print(client.playlistinfo())
 
+# This combination of settings ensures that mpd would not go on to the next item in the stationlist in cases where the chosen URL is not accesssible for any reason
+client.single = True
+client.repeat = True
+client.consume = False
+client.random = False
+
 print("Mini internet radio player")
 print("MPD version = " + client.mpd_version)
 
-# How to deal with client disconnecting after a short while?
-# Exception handling?
 currentstationid = 0
 
 while True:
@@ -72,19 +76,25 @@ X - Exit
             stationchoicenum = int(stationchoice)
             print("Playing " + stationlist[stationchoicenum]['shortname'])
             try:
-                client.play(stationchoicenum)
                 currentstationid = stationchoicenum
-            except:
+                client.play(stationchoicenum)
+            except musicpd.CommandError:
+                print("Error playing stream!")
+                print("Please choose a different station")
+            except musicpd.ConnectionError:
                 client.connect()
-                client.play(stationchoicenum)
-                currentstationid = stationchoicenum
+                try:
+                    client.play(stationchoicenum)
+                except musicpd.CommandError:
+                    print("Error playing stream!")
+                    print("Please choose a different station")
         else:
             print("Please enter a valid id")
     elif choice.upper().strip() == "T":
         # print(client.status())
         try:
             statusoutput = client.status()
-        except:
+        except musicpd.ConnectionError:
             client.connect()
             statusoutput = client.status()
         if (statusoutput['state'] == 'play'):
@@ -103,14 +113,14 @@ X - Exit
         print("Stopping...")
         try:
             client.stop()
-        except:
+        except musicpd.ConnectionError:
             client.connect()
             client.stop()
     elif choice.upper().strip() == "X":
         # Exit program
         try:
             client.clear()
-        except:
+        except musicpd.ConnectionError:
             client.connect()
             client.clear()
         # print(client.playlistinfo())

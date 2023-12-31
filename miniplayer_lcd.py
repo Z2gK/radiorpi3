@@ -53,15 +53,20 @@ def getIPaddresslist():
 # This is to prep for display of changing of title info
 # There will be no return value from this function now
 # lcd, stationlist, currentstationid, IPaddress
-def displaystationLCD2004(lcd, stationlist, currentstationid, IPaddress):
+def displaystationLCD2004(lcd, stationlist, currentstationid, IPaddress, errorflag):
     # print("in displaystationLCD2004")
     fb = ["", "", "", ""]
     stationinfotext = str(currentstationid) + ": "
     stationinfotext = stationinfotext + stationlist[currentstationid]['shortname']
     fb[0] = stationinfotext.ljust(20)[:20]
-    fb[1] = IPaddress.ljust(20)[:20]
-    fb[2] = "".ljust(20)
-    fb[3] = "".ljust(20)
+    if errorflag:
+        fb[1] = "Error playing stream"
+        fb[2] = IPaddress.ljust(20)[:20]
+        fb[3] = "".ljust(20)
+    else:
+        fb[1] = IPaddress.ljust(20)[:20]
+        fb[2] = "".ljust(20)
+        fb[3] = "".ljust(20)
 
     # lcd.clear()
     lcd.display_enabled = True
@@ -159,6 +164,8 @@ def displaystationtitleLCD2004(lcd, stationlist, currentstationid, IPaddress, cl
 with open(os.environ['HOME'] + "/.radiorpi3/stations.yaml", 'r') as fp:
     stationlist = yaml.safe_load(fp) # need to define loader here?
 
+# print(stationlist)
+
 # WARNING - this will initialize the client and clear out any existing playlist
 client = musicpd.MPDClient()
 client.connect()
@@ -173,6 +180,12 @@ lcd = CharLCD(i2c_expander='PCF8574', address=0x27, port=1, cols=20, rows=4, dot
 
 # Print this to see if initialization is done properly
 # print(client.playlistinfo())
+
+# This combination of settings ensures that mpd would not go on to the next item in the stationlist in cases where the chosen URL is not accessible for any  reason
+client.single = True
+client.repeat = True
+client.consume = False
+client.random = False
 
 print("Mini internet radio player")
 print("MPD version = " + client.mpd_version)
@@ -204,9 +217,9 @@ X - Exit
             stationchoicenum = int(stationchoice)
             print("Playing " + stationlist[stationchoicenum]['shortname'])
             try:
-                client.play(stationchoicenum)
                 currentstationid = stationchoicenum
                 trackkey = stationlist[currentstationid]['mpdtracknamekey']
+                client.play(stationchoicenum)
                 if trackkey != None:
                     playingstationwithtitle = False
                     try:
@@ -224,35 +237,56 @@ X - Exit
                         x.join()
                     except:
                         pass
-                    displaystationLCD2004(lcd, stationlist, currentstationid, getIPaddresslist()[0])
-            except:
+                    displaystationLCD2004(lcd, stationlist, currentstationid, getIPaddresslist()[0], False)
+            except musicpd.CommandError:
+                print("Error playing stream!")
+                print("Please choose a different station")
+                # Also display some message on LCD
+                playingstationwithtitle = False
+                try:
+                    x.join()
+                except:
+                    pass
+                displaystationLCD2004(lcd, stationlist, currentstationid, getIPaddresslist()[0], True)
+            except musicpd.ConnectionError:
                 client.connect()
-                client.play(stationchoicenum)
-                currentstationid = stationchoicenum
-                trackkey = stationlist[currentstationid]['mpdtracknamekey']
-                if trackkey != None:
+                try:
+                    client.play(stationchoicenum)
+                    # currentstationid = stationchoicenum
+                    # trackkey = stationlist[currentstationid]['mpdtracknamekey']
+                    if trackkey != None:
+                        playingstationwithtitle = False
+                        try:
+                            x.join()
+                        except:
+                            pass
+                        playingstationwithtitle = True
+                        x = threading.Thread(target=displaystationtitleLCD2004, args=(lcd, stationlist, currentstationid, getIPaddresslist()[0], client,))
+                        x.start()
+                    else:
+                        playingstationwithtitle = False
+                        try:
+                            x.join() 
+                        except:
+                            pass
+                        displaystationLCD2004(lcd, stationlist, currentstationid, getIPaddresslist()[0], False)
+                except musicpd.CommandError:
+                    print("Error playing stream")
+                    print("Please choose a different station")
+                    # Also display some message on LCD
                     playingstationwithtitle = False
                     try:
                         x.join()
                     except:
                         pass
-                    playingstationwithtitle = True
-                    x = threading.Thread(target=displaystationtitleLCD2004, args=(lcd, stationlist, currentstationid, getIPaddresslist()[0], client,))
-                    x.start()
-                else:
-                    playingstationwithtitle = False
-                    try:
-                        x.join() 
-                    except:
-                        pass
-                    displaystationLCD2004(lcd, stationlist, currentstationid, getIPaddresslist()[0])
+                    displaystationLCD2004(lcd, stationlist, currentstationid, getIPaddresslist()[0], True)
         else:
             print("Please enter a valid id")
     elif choice.upper().strip() == "T":
         # print(client.status())
         try:
             statusoutput = client.status()
-        except:
+        except musicpd.ConnectionError:
             client.connect()
             statusoutput = client.status()
         if (statusoutput['state'] == 'play'):
@@ -264,6 +298,11 @@ X - Exit
                 print("Now playing: " + trackoutput[trackkey])
             else:
                 print("Track or programme information not available")
+        elif ('error' in statusoutput):
+            # For cases where URL is not accessible for any reason, there will be a key named 'error' in statusoutput
+            # The mode (single, repeat, consume, random) == (True, True, False, False) in order for mpd to not automatically go on to the next track
+            print("Error playing stream!")
+            print("Please choose a different station")
         elif (statusoutput['state'] == 'stop'):
             print("Please play a station")
     elif choice.upper() == "S":
@@ -277,7 +316,7 @@ X - Exit
             except:
                 pass
             clearLCD2004(lcd, getIPaddresslist()[0])
-        except:
+        except musicpd.ConnectionError:
             client.connect()
             client.stop()
             try:
@@ -290,7 +329,7 @@ X - Exit
         # Exit program
         try:
             client.clear()
-        except:
+        except musicpd.ConnectionError:
             client.connect()
             client.clear()
         # print(client.playlistinfo())
