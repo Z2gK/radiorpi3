@@ -34,18 +34,18 @@ client = musicpd.MPDClient()
 client.connect()
 client.clear()
 
+# This combination of settings ensures that mpd would not go on to the next item in the stationlist in cases where the chosen URL is not accesssible for any reason
+client.single(1)
+client.repeat(1)
+client.consume(0)
+client.random(0)
+
 # Take a different approach now - streams will not be added to mpd playlist at the start
 for listitem in stationlist:
     client.add(listitem['URL'])
 
 # Print this to see if initialization is done properly
 # print(client.playlistinfo())
-
-# This combination of settings ensures that mpd would not go on to the next item in the stationlist in cases where the chosen URL is not accesssible for any reason
-client.single = True
-client.repeat = True
-client.consume = False
-client.random = False
 
 print("Mini internet radio player")
 print("MPD version = " + client.mpd_version)
