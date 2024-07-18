@@ -14,10 +14,14 @@
   URL: https://wskg.streamguys1.com/IN-CONCERT-A2Z
   mpdtracknamekey: title
   mpdstationnamekey: name
+#- shortname: BBC WS
+#  URL: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
+#  mpdtracknamekey: title
+#  mpdstationnamekey: name
 - shortname: BBC WS
-  URL: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
-  mpdtracknamekey: title
-  mpdstationnamekey: name
+  URL: http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/nonuk/sbr_low/ak/bbc_world_service.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
 - shortname: NPR
   URL: https://npr-ice.streamguys1.com/live.mp3
   mpdtracknamekey: null
@@ -51,7 +55,7 @@
   mpdtracknamekey: null
   mpdstationnamekey: null
 - shortname: AiFM
-  URL: https://23693.live.streamtheworld.com/AI_FMAAC.aac
+  URL: https://22243.live.streamtheworld.com/AI_FMAAC.aac
   mpdtracknamekey: null
   mpdstationnamekey: name
 - shortname: RNZ Int.
@@ -83,7 +87,19 @@
   mpdtracknamekey: null
   mpdstationnamekey: null
 - shortname: Bloomberg
-  URL: https://aa5dbe242ad94ceba164ecf25b68c84e.mediatailor.us-west-2.amazonaws.com/v1/manifest/30ead7055f8b8e1f2f04add745f139b184df6925/prod_bloomberg/3fe5d4b3-42a9-4990-b16b-4dc2e63d31c8/0.m3u8
+  URL: https://stream.revma.ihrhls.com/zc6286
   mpdtracknamekey: null
   mpdstationnamekey: null
-  
+- shortname: SYM 924
+  URL: https://19183.live.streamtheworld.com/SYMPHONY924_PREM.aac
+  mpdtracknamekey: title
+  mpdstationnamekey: null
+- shortname: Arirang
+  URL: https://amdlive-ch03-ctnd-com.akamaized.net/arirang_3ch/smil:arirang_3ch.smil/chunklist_b656000_sleng.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: UFM1003
+  URL: https://28093.live.streamtheworld.com/UFM_1003AAC.aac
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+
