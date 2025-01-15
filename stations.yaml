@@ -55,7 +55,7 @@
   mpdtracknamekey: null
   mpdstationnamekey: null
 - shortname: AiFM
-  URL: https://22243.live.streamtheworld.com/AI_FMAAC.aac
+  URL: https://28093.live.streamtheworld.com/AI_FMAAC.aac
   mpdtracknamekey: null
   mpdstationnamekey: name
 - shortname: RNZ Int.
@@ -102,4 +102,19 @@
   URL: https://28093.live.streamtheworld.com/UFM_1003AAC.aac
   mpdtracknamekey: null
   mpdstationnamekey: null
-
+- shortname: WETA Classical
+  URL: https://24413.live.streamtheworld.com/WETAFM.mp3
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: ABC Classic
+  URL: https://mediaserviceslive.akamaized.net/hls/live/2038316/classicfmnsw/masterhq.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: ABC Classic 2
+  URL: https://mediaserviceslive.akamaized.net/hls/live/2038317/classic2/masterhq.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
+- shortname: ABC Jazz
+  URL: https://mediaserviceslive.akamaized.net/hls/live/2038319/abcjazz/masterhq.m3u8
+  mpdtracknamekey: null
+  mpdstationnamekey: null
