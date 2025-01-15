@@ -2,14 +2,14 @@
 
 ## Running and using the client
 
-The usage and invocation of this client (`miniplayer_lcd.py`) is largely the same as for Client A. Once the Raspberry Pi OS has been properly configured (see build instructions), simply log into the Pi and invoke the client (`miniplayer_lcd.py`) using Python:
+The usage and invocation of this client is largely the same as for Client A and should be used when a compatible LCD is available. Once the Raspberry Pi OS has been properly configured (see build instructions) and the LCD properly connected, simply log into the Pi and invoke the client using Python:
 
 
 ```
-python /path/to/miniplayer_lcd.py
+python /path/to/miniplayerR2.py B
 ```
 
-![Running Client B](screenshot01.png)
+![Running Client B](screenshot01_updated.png)
 
 Usage of Client B is largely similar to that for Client A - refer to [Client A's usage page](usageclientA.md) for details.
 
@@ -27,6 +27,6 @@ Versions of the Raspberry Pi from 2 to 4 already come with audio output sockets 
 
 ![Information on LCD display](clientBlcd.jpg)
 
-The Client B script `miniplayer_lcd.py` displays the station name, programme information (usually the currently playing song's title, if available) and IP address of the Pi on the LCD display when a station is playing. The station name is specified in the configuration file `stations.yaml` (first line in the display above). If programme information is available, it is shown on the second and third lines of the display. The IP address would be shown on the last line. In the photograph above, the station name is `MPR Choral`, song title is `Traditional - Elijah Rock` and the IP address is `192.168.0.167`. The client will poll MPD once every few seconds to check for updates to the programme name.
+Client B displays the station name, programme information (usually the currently playing song's title, if available) and IP address of the Pi on the LCD display when a station is playing. The station name is specified in the configuration file `stations.yaml` (first line in the display above). If programme information is available, it is shown on the second and third lines of the display. The IP address would be shown on the last line. In the photograph above, the station name is `MPR Choral`, song title is `Traditional - Elijah Rock` and the IP address is `192.168.0.167`. The client will poll MPD once every few seconds to check for updates to the programme name.
 
 If programme information is not available for a station, the LCD display will only show the station name and IP address on the first two lines.

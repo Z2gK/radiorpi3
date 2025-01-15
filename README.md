@@ -1,8 +1,8 @@
 # Introduction
 
-This in-progress project aims to create an [Music Player Daemon (MPD)](https://www.musicpd.org/) based internet radio player on Raspberry Pi 3, with functionalities similar to that of an actual radio. In its most advanced state (Client C), the player will have an LCD display (HD44780U-compatible) showing station information and remote control via infrared-red (IR) receiver, without having to use a separate client (e.g. laptop) for control via SSH. 
+This in-progress project aims to create a [Music Player Daemon (MPD)](https://www.musicpd.org/) based internet radio player on Raspberry Pi 3, with functionalities similar to that of an actual radio. In its most advanced state (Client C), the player will have an LCD display (HD44780U-compatible) showing station information and remote control via infrared-red (IR) receiver, without having to use a separate client (e.g. laptop) for control via SSH. 
 
-Please note that this player works only if the station's streaming URL is static, i.e. they do not change frequently and do not have protection mechanisms (such as URL signing) built in.
+Please note that this player works only if the station's streaming URL is *static*, i.e. they do not change frequently and do not have protection mechanisms (such as URL signing) built in.
 
 ![High level design](docs/design.png)
 
@@ -24,13 +24,13 @@ For the Python client, we are using [musicpd](https://pypi.org/project/python-mu
 
 As for the IR remote control, this is still under development. The plan is to use an existing remote control used by another unused device at home and repurpose it to control this internet radio player. This would require the testing of various remote controls and IR receivers, the capturing and identification of IR codes, as well as the implementation of event-driven code, and is no doubt the most tedious and complex aspect of this project.
 
-Clients A and B are implemented by scripts `miniplayer.py` and `miniplayer_lcd.py` respectively. These scripts can be run from any directory accessible by the user (using the command `python /path/to/miniplayer.py`) and should not require elevated permissions. However, the path to the stations configuration file `stations.yaml` is hardcoded into the scripts as `$HOME/.radiorpi3/stations.yaml` and the appropriate directory should be created for this file.
+*Update 15 Jan 2024*: Clients A and B are both implemented in a single script `miniplayerR2.py`. These scripts can be run from any directory accessible by the user (using the command `python /path/to/miniplayerR2.py [A | B]`) and should not require elevated permissions. However, the path to the stations configuration file `stations.yaml` is hardcoded into the scripts as `$HOME/.radiorpi3/stations.yaml` and the appropriate directory should be created for this file. The older implementations of Clients A and B in `miniplayer.py` and `miniplayer_lcd.py` are deprecated and moved to the `archive` directory of this repository. The implementation has been streamlined so that common code is kept in `RadioRPi3.py`.
 
 Further details on the various clients and components of this project can be found at these pages:
 - [Station configuration file](docs/stations.md)
 - checkstreaminfo.py script
-- [Client A](docs/usageclientA.md) (`miniplayer.py`)
-- [Client B](docs/usageclientB.md) (`miniplayer_lcd.py`)
+- [Client A](docs/usageclientA.md) (`miniplayerR2.py A`)
+- [Client B](docs/usageclientB.md) (`miniplayerR2.py B`)
 - Client C
 
 *To be updated.*

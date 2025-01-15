@@ -2,13 +2,13 @@
 
 ## Running the client
 
-Once the Raspberry Pi OS has been properly configured (see build instructions), simply log into the Pi and invoke the client (`miniplayer.py`) using Python:
+Once the Raspberry Pi OS has been properly configured (see build instructions), simply log into the Pi and invoke the client (`miniplayerR2.py`) using Python:
 
 ```
-python /path/to/miniplayer.py
+python /path/to/miniplayerR2.py A
 ```
 
-![Running Client A](screenshot03.png)
+![Running Client A](screenshot03_updated.png)
 
 In the screenshot above, the client script is stored at the path `$HOME/src/radiorpi3/`. 
 
